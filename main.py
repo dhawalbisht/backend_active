@@ -4,15 +4,16 @@ from pydantic import BaseModel
 import httpx
 import json
 import os
-from flask_cors import CORS
 
 app = FastAPI(title="Voice Converter API")
-CORS(app, origins=["https://active-passive-converter.vercel.app"])
 
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React dev server
+    allow_origins=[
+        "http://localhost:3000", 
+        "https://active-passive-converter.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
